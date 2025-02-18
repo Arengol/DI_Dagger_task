@@ -8,6 +8,11 @@ import dagger.Component
 import dagger.Module
 import dagger.Provides
 import dagger.Subcomponent
+import javax.inject.Scope
+
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
+annotation class ActivityScope
 
 @Component(modules = [AppModule::class, ActivityModule::class])
 interface AppComponent {
@@ -23,6 +28,7 @@ class AppModule(private val application: Application) {
 }
 
 @Subcomponent
+@ActivityScope
 interface ActivityComponent {
 
     @Subcomponent.Factory
